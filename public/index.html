@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دولة البطاطس المهروسة | البوابة الرسمية المشفرة</title>
+  
+  <!-- خطوط عربية ملكية -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            potato: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              200: '#fde68a',
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+              800: '#92400e',
+              900: '#78350f',
+              gold: '#D4AF37',
+              dark: '#0a0d12',
+              card: '#121721',
+              border: '#2a3447'
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            tajawal: ['Tajawal', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- ملف التنسيقات المخصص -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-[#0a0d14] text-gray-100 font-cairo select-none min-h-screen overflow-x-hidden antialiased">
+
+  <!-- ======================================================== -->
+  <!-- 1. شاشة بوابة الأمن القومي والتسجيل (Gatekeeper / Login) -->
+  <!-- ======================================================== -->
+  <div id="gatekeeperScreen" class="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+    <!-- خلفية شبكة أمنية وتوهج -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-[#0a0d14]/90 to-black z-0 pointer-events-none"></div>
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="grid-pattern absolute inset-0 opacity-15 pointer-events-none"></div>
+
+    <div class="max-w-xl w-full bg-[#111723]/90 border-2 border-amber-500/40 rounded-3xl p-6 sm:p-8 shadow-[0_0_50px_rgba(245,158,11,0.2)] backdrop-blur-xl relative z-10 transition-all">
+      
+      <!-- شعار وعلم الدولة الرسمي -->
+      <div class="text-center mb-6">
+        <div class="relative inline-block mb-3">
+          <div class="w-32 h-20 sm:w-40 sm:h-24 mx-auto rounded-xl overflow-hidden border-2 border-amber-400 shadow-[0_0_25px_rgba(251,191,36,0.4)] transform hover:scale-105 transition-transform duration-300">
+            <img src="/assets/flag.jpg" alt="علم دولة البطاطس المهروسة" class="w-full h-full object-cover">
+          </div>
+          <div class="absolute -bottom-2 -right-2 bg-amber-500 text-black px-2 py-0.5 rounded-full text-xs font-bold shadow flex items-center gap-1">
+            <i class="fa-solid fa-crown text-[10px]"></i> السيادة الرسمية
+          </div>
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 tracking-wide mt-2">
+          دولة البطاطس المهروسة
+        </h1>
+        <p class="text-amber-300/80 text-xs sm:text-sm font-tajawal mt-1">
+          بوابة الجوازات والأمن القومي • القوة في الهرس والسيادة للزبدة
+        </p>
+
+        <!-- شريط الحماية الفائقة -->
+        <div class="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-500/30 text-red-400 text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+          نظام حماية مشدد: DEFCON-1 • تشفير أمني عالي السرية 256-bit
+        </div>
+      </div>
+
+      <!-- نموذج الدخول / تقديم الطلب -->
+      <form id="joinForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-amber-300 mb-1.5 flex items-center justify-between">
+            <span><i class="fa-solid fa-id-card text-amber-400 ml-1"></i> الاسم الكامل أو اللقب العسكري:</span>
+            <span class="text-gray-400 text-[11px]">مطلوب إلزامي</span>
+          </label>
+          <input type="text" id="applicantName" required placeholder="مثال: القائد أحمد / المواطن المهروس سامي" 
+            class="w-full bg-[#0a0e17] border border-amber-500/30 focus:border-amber-400 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 text-sm transition-all">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-amber-300 mb-1.5">
+            <i class="fa-solid fa-user-secret text-amber-400 ml-1"></i> الاسم الحركي / الكود السري التابع لك (اختياري):
+          </label>
+          <input type="text" id="applicantCodename" placeholder="مثال: الشبح المقرمش / زبدة 007" 
+            class="w-full bg-[#0a0e17] border border-amber-500/30 focus:border-amber-400 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 text-sm transition-all">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-amber-300 mb-1.5">
+            <i class="fa-solid fa-stamp text-amber-400 ml-1"></i> سبب طلب الدخول أو رسالة الولاء لدولة البطاطس:
+          </label>
+          <textarea id="applicantNote" rows="2" placeholder="أعلن ولائي التام لحكم البطاطس المهروسة وأطلب الانضمام..." 
+            class="w-full bg-[#0a0e17] border border-amber-500/30 focus:border-amber-400 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 text-sm transition-all resize-none"></textarea>
+        </div>
+
+        <!-- قسم كود القيادة العليا السري (المشير / الأدمن) -->
+        <div class="border-t border-amber-500/20 pt-3">
+          <button type="button" id="toggleAdminPasscodeBtn" class="text-xs text-amber-400/90 hover:text-amber-300 flex items-center gap-1.5 transition-colors">
+            <i class="fa-solid fa-key"></i> هل أنت قائد القيادة العليا؟ (انقر لإدخال رمز السيادة السري)
+          </button>
+          
+          <div id="adminPasscodeContainer" class="hidden mt-2 p-3 bg-amber-950/20 border border-amber-500/40 rounded-xl transition-all">
+            <label class="block text-xs font-bold text-amber-400 mb-1 flex items-center gap-1">
+              <i class="fa-solid fa-lock"></i> كود القيادة العليا السري (الوصول المطلق):
+            </label>
+            <input type="password" id="adminPasscode" placeholder="أدخل الكود السري المعتمد..." 
+              class="w-full bg-[#080b12] border border-amber-500/40 rounded-lg px-3 py-2 text-amber-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm tracking-widest font-mono">
+            <p class="text-[10px] text-gray-400 mt-1">كود السيادة يمنحك منصب [مشير البطاطس الأعلى] والتحكم الكامل بالدولة.</p>
+          </div>
+        </div>
+
+        <!-- زر الإرسال -->
+        <button type="submit" id="submitJoinBtn" 
+          class="w-full bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-black font-extrabold py-3.5 px-6 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all transform active:scale-95 flex items-center justify-center gap-2 text-base">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>إرسال طلب الانضمام والتصريح 🥔</span>
+        </button>
+      </form>
+
+      <div class="mt-6 text-center text-[11px] text-gray-500 border-t border-gray-800 pt-3 flex items-center justify-center gap-2">
+        <i class="fa-solid fa-triangle-exclamation text-amber-500"></i>
+        <span>أي محاولة اختراق ستقابل برد بوريه ساحق وعزل أمني فوري.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- 2. شاشة الانتظار والمراجعة الأمنية (Waiting for Approval)  -->
+  <!-- ======================================================== -->
+  <div id="waitingScreen" class="hidden min-h-screen flex items-center justify-center p-4 relative">
+    <div class="max-w-md w-full bg-[#111723]/95 border-2 border-amber-500/50 rounded-3xl p-8 text-center shadow-[0_0_60px_rgba(245,158,11,0.25)] relative overflow-hidden backdrop-blur-xl">
+      
+      <!-- رادار الفحص الأمني الدائري -->
+      <div class="relative w-36 h-36 mx-auto mb-6 flex items-center justify-center">
+        <div class="radar-box absolute inset-0 rounded-full border-2 border-amber-500/40"></div>
+        <div class="radar-sweep absolute inset-0 rounded-full"></div>
+        <div class="w-20 h-20 rounded-full bg-amber-500/10 border border-amber-400 flex items-center justify-center relative z-10 shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+          <i class="fa-solid fa-fingerprint text-3xl text-amber-400 animate-pulse"></i>
+        </div>
+      </div>
+
+      <div class="inline-block px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-bold mb-3">
+        حالة الطلب: قيد الفحص الأمني الصارم ⏳
+      </div>
+
+      <h2 class="text-2xl font-black text-amber-300 mb-2">في انتظار موافقة القيادة العليا</h2>
+      
+      <p class="text-gray-300 text-sm leading-relaxed mb-4">
+        تم إرسال ملفك وسجلك الأمني إلى <span class="text-amber-400 font-bold">مشير البطاطس الأعلى</span>.<br>
+        لا تغلق هذه الصفحة، سيتم إدخالك تلقائياً فور منحك التصريح الرسمي وتعيين منصبك!
+      </p>
+
+      <div class="p-3 bg-[#0a0d14] rounded-xl border border-amber-500/20 text-xs text-gray-400 space-y-1 mb-6 text-right">
+        <div><strong class="text-amber-300">الاسم المسجل:</strong> <span id="waitUserName" class="text-white"></span></div>
+        <div><strong class="text-amber-300">الاسم الحركي:</strong> <span id="waitUserCode" class="text-white"></span></div>
+        <div><strong class="text-amber-300">حالة السيادة:</strong> <span class="text-yellow-400 animate-pulse">بانتظار توقيع الفرمان</span></div>
+      </div>
+
+      <button id="cancelWaitBtn" class="text-xs text-gray-400 hover:text-red-400 underline transition-colors">
+        إلغاء الطلب والعودة للرئيسية
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- 3. شاشة الرفض الأمني (Rejected Screen)                   -->
+  <!-- ======================================================== -->
+  <div id="rejectedScreen" class="hidden min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-[#1c0f12] border-2 border-red-500 rounded-3xl p-8 text-center shadow-[0_0_50px_rgba(239,68,68,0.3)]">
+      <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-red-950 border-2 border-red-500 flex items-center justify-center text-red-500 text-4xl shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+        <i class="fa-solid fa-ban"></i>
+      </div>
+      <h2 class="text-2xl font-black text-red-400 mb-2">تم رفض دخولك لأراضي الدولة!</h2>
+      <p id="rejectReasonText" class="text-gray-300 text-sm mb-6 leading-relaxed">
+        بناءً على تقرير شعبة الاستخبارات البوريه، تقرر حرمانك من الدخول لدواعٍ أمنية عليا.
+      </p>
+      <button id="reapplyBtn" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-2.5 px-4 rounded-xl transition-all">
+        المحاولة مجدداً
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- 4. البوابة الرئيسية لدولة البطاطس (Main State Dashboard)   -->
+  <!-- ======================================================== -->
+  <div id="mainDashboard" class="hidden min-h-screen flex flex-col bg-[#0b0e14]">
+
+    <!-- شريط الإعلان العاجل / الفرمان العسكري (يظهر عند صدور قرار) -->
+    <div id="stateAlertBanner" class="hidden bg-gradient-to-r from-red-600 via-amber-600 to-red-600 text-white px-4 py-2 text-center text-xs sm:text-sm font-bold shadow-lg animate-pulse flex items-center justify-center gap-2">
+      <i class="fa-solid fa-bullhorn text-yellow-300"></i>
+      <span id="stateAlertText">بيان عسكري عاجل من القيادة العليا!</span>
+      <button onclick="document.getElementById('stateAlertBanner').classList.add('hidden')" class="mr-4 text-xs bg-black/40 px-2 py-0.5 rounded hover:bg-black/60">إغلاق</button>
+    </div>
+
+    <!-- الهيدر الرئاسي الرسمي -->
+    <header class="bg-[#101520]/95 border-b border-amber-500/30 px-3 sm:px-6 py-2.5 backdrop-blur-md sticky top-0 z-30 shadow-md">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+        
+        <!-- العلم والاسم -->
+        <div class="flex items-center gap-3">
+          <img src="/assets/flag.jpg" alt="العلم" class="w-11 h-7 rounded border border-amber-400/80 shadow object-cover">
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-sm sm:text-lg font-black text-amber-400 tracking-wide">دولة البطاطس المهروسة</h1>
+              <span class="hidden sm:inline-block bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] px-2 py-0.2 rounded-full font-bold">
+                المنظومة المشفرة
+              </span>
+            </div>
+            <p class="text-[10px] sm:text-xs text-gray-400 hidden xs:block">
+              عاصمة الهرس القومي • اتصال صوتي ومحادثات آمنة
+            </p>
+          </div>
+        </div>
+
+        <!-- معلومات المستخدم الحالي ورتبته -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- بطاقة المستخدم -->
+          <div class="bg-[#161d2d] border border-amber-500/30 rounded-xl px-2.5 py-1 sm:px-3 sm:py-1.5 flex items-center gap-2">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center text-amber-300 text-xs sm:text-sm font-black shadow" id="userAvatar">
+              🥔
+            </div>
+            <div class="text-right">
+              <div class="text-xs font-bold text-white leading-tight flex items-center gap-1">
+                <span id="currentUserName">المواطن</span>
+                <span id="adminBadgeIcon" class="hidden text-amber-400 text-[11px]"><i class="fa-solid fa-crown"></i></span>
+              </div>
+              <div class="text-[10px] text-amber-400/90 font-semibold" id="currentUserRole">مواطن مهروس</div>
+            </div>
+          </div>
+
+          <!-- زر فتح راديو الصوت المباشر -->
+          <button id="toggleVoiceRoomBtn" class="bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/50 text-amber-300 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm">
+            <i class="fa-solid fa-walkie-talkie"></i>
+            <span class="hidden md:inline">الراديو اللاسلكي</span>
+            <span id="voiceUsersBadge" class="bg-amber-500 text-black text-[10px] px-1.5 py-0.2 rounded-full font-black">0</span>
+          </button>
+
+          <!-- زر غرفة القيادة العليا (يظهر للأدمن فقط) -->
+          <button id="adminPanelBtn" class="hidden bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-300 text-black px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-all">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span class="hidden sm:inline">غرفة العمليات المركزية</span>
+            <span id="pendingBadge" class="hidden bg-red-600 text-white text-[10px] px-1.5 py-0.2 rounded-full animate-bounce">0</span>
+          </button>
+
+          <!-- زر تسجيل الخروج -->
+          <button id="logoutBtn" title="مغادرة الأراضي" class="text-gray-400 hover:text-red-400 p-2 text-sm transition-colors">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ======================================================== -->
+    <!-- شريط الراديو اللاسلكي المباشر (Voice Walkie-Talkie Room)  -->
+    <!-- ======================================================== -->
+    <div id="voiceRoomPanel" class="hidden bg-[#0d121c] border-b border-amber-500/40 p-3 sm:p-4 transition-all">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-400 flex items-center justify-center text-amber-400">
+            <i class="fa-solid fa-tower-broadcast text-lg animate-pulse"></i>
+          </div>
+          <div>
+            <div class="text-xs sm:text-sm font-black text-amber-300 flex items-center gap-2">
+              <span>الراديو اللاسلكي الميداني التكتيكي</span>
+              <span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400 text-[10px] font-mono border border-green-500/30">مباشر ومحمي</span>
+            </div>
+            <p class="text-[11px] text-gray-400">تحدث بصوتك مباشرة مع جميع القيادات والمواطنين في أراضي الدولة</p>
+          </div>
+        </div>
+
+        <!-- قائمة المتحدثين الحالية -->
+        <div id="voiceUsersList" class="flex flex-wrap items-center gap-2 max-w-xl overflow-x-auto py-1">
+          <!-- يتم إدراج المتحدثين ديناميكياً -->
+        </div>
+
+        <!-- أزرار التحكم بالصوت -->
+        <div class="flex items-center gap-2">
+          <!-- زر كتم / تفعيل المايك -->
+          <button id="voiceMicToggleBtn" class="bg-red-600/30 hover:bg-red-600/40 border border-red-500 text-red-300 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all">
+            <i class="fa-solid fa-microphone-slash" id="voiceMicIcon"></i>
+            <span id="voiceMicText">المايكروفون مكتوم</span>
+          </button>
+
+          <!-- زر مغادرة الراديو -->
+          <button id="leaveVoiceBtn" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-2 rounded-xl text-xs font-bold transition-all">
+            مغادرة الراديو
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- جسم التطبيق الرئيسي (شات + قائمة المواطنين) -->
+    <div class="flex-1 max-w-7xl w-full mx-auto p-2 sm:p-4 grid grid-cols-1 lg:grid-cols-4 gap-3 sm:gap-4 overflow-hidden">
+      
+      <!-- ======================================================== -->
+      <!-- القائمة الجانبية: مجلس الدولة والهيكل العسكري والمواطنين -->
+      <!-- ======================================================== -->
+      <div class="hidden lg:flex flex-col bg-[#111724]/90 border border-amber-500/20 rounded-2xl p-3.5 overflow-hidden shadow-lg h-[calc(100vh-130px)]">
+        
+        <!-- رأس القائمة -->
+        <div class="pb-3 border-b border-gray-800 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-sitemap text-amber-400 text-sm"></i>
+            <h2 class="text-xs font-black text-amber-300 tracking-wider">مجلس الدولة والمناصب</h2>
+          </div>
+          <span id="onlineCountBadge" class="bg-green-500/10 text-green-400 border border-green-500/30 text-[10px] px-2 py-0.5 rounded-full font-bold">
+            0 متصل
+          </span>
+        </div>
+
+        <!-- قائمة الأعضاء والرتب -->
+        <div id="citizensList" class="flex-1 overflow-y-auto space-y-2 mt-3 custom-scrollbar pr-1">
+          <!-- يتم الملء ديناميكياً -->
+        </div>
+
+        <!-- بطاقة فخر واعتزاز وطني -->
+        <div class="mt-3 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-center text-[10px] text-amber-300">
+          <i class="fa-solid fa-quote-right ml-1"></i>
+          عاشت دولة البطاطس المهروسة حرة أبية زبدية!
+        </div>
+      </div>
+
+
+      <!-- ======================================================== -->
+      <!-- الشات الرئيسي وغرفة العمليات المركزية (Messages & Audio)  -->
+      <!-- ======================================================== -->
+      <div class="lg:col-span-3 flex flex-col bg-[#111724]/90 border border-amber-500/25 rounded-2xl overflow-hidden shadow-2xl h-[calc(100vh-120px)] sm:h-[calc(100vh-130px)]">
+        
+        <!-- ترويسة الشات -->
+        <div class="px-4 py-2.5 bg-[#141b2b] border-b border-amber-500/20 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+            <div>
+              <div class="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
+                <span>غرفة البرقيات السرية المشتركة</span>
+                <i class="fa-solid fa-lock text-amber-400 text-xs" title="مشفر بالكامل"></i>
+              </div>
+              <div class="text-[10px] text-gray-400">جميع الرسائل والتسجيلات الصوتية مؤمنة بسرية سيادية</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <!-- زر تشغيل السلام الوطني لدولة البطاطس المهروسة -->
+            <button id="playAnthemBtn" class="bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs px-2.5 py-1 rounded-lg flex items-center gap-1 transition-all">
+              <i class="fa-solid fa-music"></i>
+              <span class="hidden sm:inline">السلام الوطني</span>
+            </button>
+            <!-- زر تفريغ الشات للأدمن -->
+            <button id="adminClearChatBtn" class="hidden text-xs text-red-400/80 hover:text-red-300 p-1.5 rounded" title="مسح السجل بأمر عسكري">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- منطقة الرسائل التراكمية -->
+        <div id="messagesContainer" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 custom-scrollbar bg-gradient-to-b from-[#0e131d] to-[#0a0d14]">
+          <!-- رسائل الشات تنزل هنا -->
+        </div>
+
+        <!-- شريط تسجيل الصوت المباشر (يظهر أثناء تسجيل ريكورد صوتي) -->
+        <div id="audioRecordingBar" class="hidden px-4 py-3 bg-red-950/40 border-t border-red-500/40 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-red-500 animate-ping"></span>
+            <div class="text-xs font-bold text-red-400 flex items-center gap-1.5">
+              <span>جاري تسجيل برقية صوتية...</span>
+              <span id="recordingTimer" class="font-mono bg-black/50 px-2 py-0.5 rounded text-white text-xs">00:00</span>
+            </div>
+          </div>
+
+          <!-- شريط الذبذبات التخيلي -->
+          <div class="flex items-center gap-1 h-5">
+            <span class="w-1 bg-red-400 rounded-full animate-bounce h-3"></span>
+            <span class="w-1 bg-red-400 rounded-full animate-bounce h-5 delay-75"></span>
+            <span class="w-1 bg-red-400 rounded-full animate-bounce h-2 delay-150"></span>
+            <span class="w-1 bg-red-400 rounded-full animate-bounce h-4 delay-200"></span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button id="cancelRecordBtn" class="text-xs text-gray-400 hover:text-red-300 px-3 py-1 bg-gray-800 rounded-lg">إلغاء</button>
+            <button id="sendRecordBtn" class="text-xs text-white bg-red-600 hover:bg-red-500 font-bold px-3 py-1 rounded-lg flex items-center gap-1 shadow">
+              <i class="fa-solid fa-paper-plane"></i> إرسال الصوت
+            </button>
+          </div>
+        </div>
+
+        <!-- شريط كتابة الرسائل والإرسال -->
+        <div class="p-2.5 sm:p-3 bg-[#131926] border-t border-amber-500/20">
+          <form id="chatForm" class="flex items-center gap-2">
+            
+            <!-- زر تسجيل الملاحظة الصوتية (Voice Note) -->
+            <button type="button" id="recordVoiceNoteBtn" title="تسجيل صوتي فوري (Voice Note)" 
+              class="w-10 h-10 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center transition-all flex-shrink-0 active:scale-95 shadow-sm">
+              <i class="fa-solid fa-microphone text-base"></i>
+            </button>
+
+            <!-- حقل كتابة النص -->
+            <input type="text" id="chatInput" placeholder="اكتب برقية مشفرة إلى مواطني دولة البطاطس المهروسة..." 
+              class="flex-1 bg-[#090d14] border border-amber-500/30 focus:border-amber-400 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-all">
+
+            <!-- أزرار الإرسال -->
+            <button type="submit" id="sendMsgBtn" 
+              class="w-10 h-10 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-black flex items-center justify-center transition-all flex-shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.3)] active:scale-95">
+              <i class="fa-solid fa-paper-plane text-sm transform -rotate-45"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
+  <!-- 5. نافذة غرفة العمليات والقيادة العليا (Supreme Admin Modal) -->
+  <!-- ======================================================== -->
+  <div id="adminModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md">
+    <div class="max-w-4xl w-full bg-[#111724] border-2 border-amber-500 rounded-3xl shadow-[0_0_60px_rgba(245,158,11,0.3)] overflow-hidden flex flex-col max-h-[92vh]">
+      
+      <!-- ترويسة نافذة التحكم -->
+      <div class="px-5 py-4 bg-gradient-to-r from-amber-950/70 via-[#182030] to-amber-950/70 border-b border-amber-500/40 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500 text-black flex items-center justify-center text-xl font-black shadow-[0_0_15px_rgba(245,158,11,0.6)]">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <div>
+            <h2 class="text-base sm:text-lg font-black text-amber-300">غرفة العمليات الرئاسية • مشير البطاطس الأعلى</h2>
+            <p class="text-xs text-gray-300">صلاحيات السيادة المطلقة، تعيين المناصب، وقبول طلبات الانضمام</p>
+          </div>
+        </div>
+        <button id="closeAdminModalBtn" class="text-gray-400 hover:text-white text-xl p-2">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- تبويبات التحكم -->
+      <div class="flex border-b border-gray-800 bg-[#0c1018] px-4 gap-2 text-xs font-bold overflow-x-auto">
+        <button class="admin-tab-btn active px-4 py-3 border-b-2 border-amber-500 text-amber-400 flex items-center gap-1.5" data-tab="applicantsTab">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>طلبات الانضمام المعلقة</span>
+          <span id="tabPendingCount" class="bg-red-500 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+        <button class="admin-tab-btn px-4 py-3 border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-1.5" data-tab="membersTab">
+          <i class="fa-solid fa-users-gear"></i>
+          <span>إدارة المواطنين وتعيين المناصب</span>
+        </button>
+        <button class="admin-tab-btn px-4 py-3 border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-1.5" data-tab="decreeTab">
+          <i class="fa-solid fa-scroll"></i>
+          <span>إصدار فرمان عسكري</span>
+        </button>
+        <button class="admin-tab-btn px-4 py-3 border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-1.5" data-tab="logsTab">
+          <i class="fa-solid fa-shield-cat"></i>
+          <span>سجلات الأمان والاستخبارات</span>
+        </button>
+      </div>
+
+      <!-- محتوى التبويبات -->
+      <div class="p-4 sm:p-6 overflow-y-auto flex-1 custom-scrollbar">
+        
+        <!-- التبويب 1: طلبات الانضمام المعلقة -->
+        <div id="applicantsTab" class="admin-tab-content space-y-3">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xs font-black text-amber-300">قائمة المواطنين المتقدمين بطلب تصريح دخول:</h3>
+            <button id="refreshApplicantsBtn" class="text-xs text-amber-400 hover:underline"><i class="fa-solid fa-arrows-rotate ml-1"></i>تحديث القائمة</button>
+          </div>
+          <div id="applicantsListContainer" class="space-y-3">
+            <!-- بطاقات المتقدمين تنزل هنا -->
+          </div>
+        </div>
+
+        <!-- التبويب 2: إدارة المواطنين وتغيير المناصب -->
+        <div id="membersTab" class="admin-tab-content hidden space-y-3">
+          <div class="text-xs text-gray-400 mb-2">يمكنك ترقية أي مواطن أو عزله أو منحه منصباً رفيعاً في الدولة فوراً:</div>
+          <div id="approvedMembersContainer" class="space-y-2">
+            <!-- قائمة الأعضاء المعتمدين لتعديل مناصبهم -->
+          </div>
+        </div>
+
+        <!-- التبويب 3: إصدار فرمان سيادي -->
+        <div id="decreeTab" class="admin-tab-content hidden space-y-4">
+          <div class="bg-amber-950/20 border border-amber-500/40 p-4 rounded-2xl">
+            <h4 class="text-sm font-bold text-amber-300 mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-bullhorn text-amber-400"></i> إعلان فرمان عسكري لجميع مواطني الدولة:
+            </h4>
+            <p class="text-xs text-gray-400 mb-3">سيظهر هذا الإعلان بشريط عاجل في أعلى الموقع لجميع المتصلين مع صافرة إنذار رسمية!</p>
+            <textarea id="decreeInput" rows="3" placeholder="أيها الشعب المهروس العظيم... تقرر الآتي..." 
+              class="w-full bg-[#0a0e17] border border-amber-500/30 rounded-xl p-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 mb-3"></textarea>
+            <button id="broadcastDecreeBtn" class="bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-black px-6 py-2.5 rounded-xl text-xs sm:text-sm shadow flex items-center gap-2">
+              <i class="fa-solid fa-satellite-dish"></i> إطلاق الفرمان العسكري الشامل 📣
+            </button>
+          </div>
+        </div>
+
+        <!-- التبويب 4: سجلات الأمان -->
+        <div id="logsTab" class="admin-tab-content hidden space-y-2">
+          <div class="text-xs text-gray-400 mb-2">سجل العمليات المشفر ورصد محاولات الدخول:</div>
+          <div id="securityLogsContainer" class="space-y-1.5 font-mono text-xs">
+            <!-- سجلات الأمان -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- مكتبات الصوت والسوكيت -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
